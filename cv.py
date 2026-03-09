@@ -9,7 +9,7 @@ image_window = "Source Image"
 result_window = "Result window"
 match_method = 0
 max_Trackbar = 5
-def main(argv):
+def main():
     if (len(sys.argv) < 3):
         print('Not enough parameters')
         print('Usage:\nmatch_template_demo.py <image_name> <template_name> [<mask_name>]')
@@ -56,7 +56,7 @@ def MatchingMethod(param):
     
     cv.normalize( result, result, 0, 1, cv.NORM_MINMAX, -1 )
     
-    _minVal, _maxVal, minLoc, maxLoc = cv.minMaxLoc(result, None)
+    _, _, minLoc, maxLoc = cv.minMaxLoc(result, None)
     
     
     if (match_method == cv.TM_SQDIFF or match_method == cv.TM_SQDIFF_NORMED):
@@ -69,7 +69,6 @@ def MatchingMethod(param):
     cv.rectangle(result, matchLoc, (matchLoc[0] + templ.shape[0], matchLoc[1] + templ.shape[1]), (0,0,0), 2, 8, 0 )
     cv.imshow(image_window, img_display)
     cv.imshow(result_window, result)
-    
-    pass
+
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()

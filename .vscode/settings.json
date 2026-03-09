@@ -1,8 +1,5 @@
 {
-    "python.pythonPath": "c:\\Users\\Risha\\AI\\venv\\Scripts\\python.exe",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "remote.WSL.useShellEnvironment": false,
-    "terminal.explorerKind": "external",
-    "terminal.integrated.shellArgs.windows": null
+    "terminal.explorerKind": "external"
 }
