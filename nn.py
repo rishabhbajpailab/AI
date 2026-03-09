@@ -8,7 +8,7 @@ nnfs.init()
 #Class for layers, takes inputs of the number of inputs and the number of neurons
 # has two methods and a constructor
 # forward moves through the network in the forward direction 
-# backward is for 
+# backward is for backpropagation, computing gradients w.r.t. weights, biases, and inputs
 class Layer_Dense:
     def __init__(self, n_inputs, n_neurons):
         self.weights = 0.10 * np.random.randn(n_inputs,n_neurons)
@@ -170,8 +170,8 @@ class Optimizer_Adam:
             layer.weight_cache = np.zeros_like(layer.weights)
             layer.bias_momentums = np.zeros_like(layer.biases)
             layer.bias_cache = np.zeros_like(layer.biases)
-        layer.weight_momentums = self.beta_1 * layer.weight_momentums + (1 - self.beta_2) * layer.dweights
-        layer.bias_momentums = self.beta_1 * layer.bias_momentums + (1 - self.beta_2) * layer.dbiases
+        layer.weight_momentums = self.beta_1 * layer.weight_momentums + (1 - self.beta_1) * layer.dweights
+        layer.bias_momentums = self.beta_1 * layer.bias_momentums + (1 - self.beta_1) * layer.dbiases
         weight_momentums_corrected = layer.weight_momentums / (1 - self.beta_1 ** (self.iterations + 1))
         bias_momentums_corrected = layer.bias_momentums / (1 - self.beta_1 ** (self.iterations + 1))
         layer.weight_cache = self.beta_2 * layer.weight_cache + (1 - self.beta_2) * layer.dweights**2
